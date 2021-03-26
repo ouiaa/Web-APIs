@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-节点操作之兄弟节点</title>
+</head>
+
+<body>
+    <div>111</div>
+    <span>222</span>
+    <script>
+        var div = document.querySelector('div');
+        //1.nextSibling下一个兄弟节点  包括所有节点
+        console.log(div.nextSibling);
+        console.log(div.previousSibling);//上一个
+        //2.nextElementSibling下一个兄弟元素节点
+        console.log(div.nextElementSibling);
+        console.log(div.previousElementSibling);//上一个
+    </script>
+</body>
+
+</html>

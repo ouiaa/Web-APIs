@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-crateElement效率测试</title>
+</head>
+
+<body>
+    <script>
+        function fn() {
+            var start = +new Date();
+
+            for (var i = 0; i <= 1000; i++) {
+                var div = document.createElement('div');
+                div.style.width = '100px';
+                div.style.height = '2px';
+                div.style.border = '1px solid red';
+                document.body.appendChild(div)
+            }
+            var end = +new Date();
+            console.log(end - start);
+        }
+        fn();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-5s后自动跳转页面</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <div></div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.addEventListener('click', function () {
+            location.href = 'https://www.baidu.com';//注意是整个url，不要忘了通信协议
+        })
+        var time = 5;//倒计时时间注意得是全局变量
+        setInterval(function () {
+            if (time == 0) {
+                location.href = 'https://www.baidu.com';
+            } else {
+                div.innerHTML = time + '秒后自动跳转链接';
+                time--;
+            }
+        }, 1000)
+    </script>
+</body>
+
+</html>

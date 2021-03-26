@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-根据标签获取元素</title>
+</head>
+
+<body>
+    <ul>
+        <li>啦啦啦</li>
+        <li>哈哈哈</li>
+        <li>呼呼呼</li>
+    </ul>
+    <ol id='ol'>
+        <li>11</li>
+        <li>22</li>
+    </ol>
+    <script>
+        //1.返回的是获取元素对象的集合，并以伪数组的形式存储
+        var lis = document.getElementsByTagName('li');
+        console.log(lis);
+        console.log(lis[0]);//可以使用索引获取数据
+        //2.可以通过遍历依次打印里面的元素
+        for (var i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+        }
+        //3.如果页面中只有一个li时，返回的还是伪数组形式
+        //4.如果页面中没有这个元素，返回的是一个空的伪数组
+
+        //只想获取ol下的li
+        var ol = document.getElementById('ol');
+        //var ol = document.getElementsByTagName('ol');//[ol]，因为根据标签获得元素返回的对象是对象的集合，只有数组元素才是单个对象
+        console.log(ol.getElementsByTagName('li'));//获取父元素ol下的所有li元素
+
+    </script>
+</body>
+
+</html>

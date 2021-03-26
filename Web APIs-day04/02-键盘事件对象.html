@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-键盘事件对象</title>
+</head>
+
+<body>
+    <script>
+        //keyup keydown事件不区分字母大小写  a和A得到的都是65
+        document.addEventListener('keydown', function (e) {
+            // console.log(e);
+            console.log('down:' + e.keyCode);//注意C大写
+            //我们可以通过keyCode返回的ASCII码值来判断用户按下了哪个键
+            if (e.keyCode == 65) {
+                alert('您按下了a键');
+            } else {
+                alert('您没有按下a键');
+
+            }
+        })
+        //keypress事件区分字母大小写，a 97 A 65
+        document.addEventListener('keypress', function (e) {
+            console.log('press:' + e.keyCode);
+        })
+    </script>
+</body>
+
+</html>

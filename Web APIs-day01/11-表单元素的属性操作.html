@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-表单元素的属性操作</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <input type="text" value="请输入内容">
+    <script>
+        // 1.获取事件源
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input')
+        // 2.注册事件 事件处理
+        btn.onclick = function () {
+            //innerHTML是普通盒子才有的，如div
+            //input.innerHTML='被点击了';
+            //表单里的文字内容通过value来修改
+            input.value = '被点击了';
+
+            //想要按钮使用一次后就禁用，通过修改disabled实现
+            // btn.disabled = true;
+            this.disabled = true;//上面语句的改进，更简单
+            //this 指的是事件函数的调用者 btn
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-事件委托</title>
+</head>
+
+<body>
+    <ul>
+        <li>点击有弹框</li>
+        <li>点击有弹框</li>
+        <li>点击有弹框</li>
+        <li>点击有弹框</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function (e) {
+            // alert('tan');
+            e.target.style.backgroundColor = 'pink';//让当前点击的li变背景色
+        })
+    </script>
+</body>
+
+</html>

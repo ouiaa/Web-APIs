@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-节点操作之父节点</title>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima"></span>
+        </div>
+    </div>
+    <script>
+        //获取erweima和box元素
+        //以前的方法
+        var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        //使用父节点parentNode，简单获得box元素,是最近一级的父元素（亲父亲），如果找不到父节点就返回为null
+        console.log(erweima.parentNode);
+
+
+    </script>
+</body>
+
+</html>

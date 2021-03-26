@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-动态生成表格案例</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        table thead {
+            background-color: #ccc;
+        }
+
+        th,
+        td {
+            height: 30px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing='0'>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        //1.先准备数据
+        //通过数组的形式存储数据对象，注意不包括操作
+        var datas = [{
+            name: '张三',
+            subject: '数学',
+            score: 100,
+        }, {
+            name: '李思',
+            subject: '数学',
+            score: 90,
+        }, {
+            name: '王武',
+            subject: '数学',
+            score: 80,
+        }, {
+            name: '刘柳',
+            subject: '数学',
+            score: 89,
+        }]
+        var tbody = document.querySelector('tbody');
+        //2.创建行，行数与人数有关（取决于数组长度）
+        for (var i = 0; i < datas.length; i++) {//外层循环管行
+            //创建元素节点行tr
+            var tr = document.createElement('tr');
+            //添加节点
+            tbody.appendChild(tr);
+            //3.行里创建单元格td(与数据有关，取决于对象里的属性数量，循环对象属性)
+            for (var k in datas[i]) {//内层循环管单元格
+                //创建单元格
+                var td = document.createElement('td');
+                //把对象里面的属性值放入单元格内
+                td.innerHTML = datas[i][k];//obj[k] 属性值
+                //添加单元格，放入行内
+                tr.appendChild(td);
+            }
+            //4.创建操作单元格，含删除操作
+            var td = document.createElement('td');
+            td.innerHTML = '<a href=javascript: ;>删除</a>'
+            tr.appendChild(td);
+        }
+        //5.点击删除操作 添加完单元格后再进行删除，放在for循环创建的外面
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                //删除链接a所在的行tr node.removeChild  a的爸爸是td 再爸爸是tr
+                //tr的爸爸是tbody
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

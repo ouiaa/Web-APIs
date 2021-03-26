@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-倒计时效果</title>
+    <style>
+        .t {
+            margin: 100px;
+        }
+
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="t">
+        <span class="h">1</span>
+        <span class="m">2</span>
+        <span class="s">3</span>
+    </div>
+    <script>
+        var hour = document.querySelector('.h');
+        var minute = document.querySelector('.m');
+        var second = document.querySelector('.s');
+        var inputTime = +new Date('2021-3-19 18:00:00');//将目标时间放在外面，在外面修改时间，尽量保持函数不变
+        countDown();//先调用一次函数，防止刷新页面出现1s的空白
+        setInterval(countDown, 1000);//每个1s执行一次
+        function countDown() {
+            var nowTime = +new Date();
+            var times = (inputTime - nowTime) / 1000;
+            var h = parseInt(times / 60 / 60 % 24);//时
+            h = h < 10 ? '0' + h : h;//补零
+            hour.innerHTML = h;
+            var m = parseInt(times / 60 % 60);//分
+            m = m < 10 ? '0' + m : m;//补零
+            minute.innerHTML = m;
+            var s = parseInt(times % 60);//秒
+            s = s < 10 ? '0' + s : s;//补零
+            second.innerHTML = s;
+        }
+    </script>
+</body>
+
+</html>

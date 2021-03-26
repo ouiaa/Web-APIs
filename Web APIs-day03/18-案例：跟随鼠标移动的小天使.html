@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-案例：跟随鼠标移动的小天使</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="">
+    <script>
+        var img = document.querySelector('img');
+        //核心原理：每次鼠标移动，会获得新的鼠标坐标，将这个x、y坐标作为图片的top和left值
+        document.addEventListener('mousemove', function (e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            // console.log(x, y);
+            //注意一定要加单位px
+            img.style.top = y - 50 + 'px';
+            img.style.left = x - 40 + 'px';
+        })
+    </script>
+</body>
+
+</html>

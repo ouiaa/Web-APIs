@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-密码框格式提示错误信息</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .register {
+            width: 400px;
+            height: 20px;
+            margin: 100px auto;
+        }
+
+
+        .message {
+            /* float: left; */
+            display: inline-block;
+            color: #999;
+            font-size: 12px;
+            line-height: 20px;
+            background: url(images/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+
+        .wrong {
+            color: red;
+            background-image: url(images/wrong.png);
+        }
+
+        .right {
+            color: green;
+            background-image: url(images/right.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" name="" id="ipt">
+        <p class='message'>请输入6~16位密码</p>
+    </div>
+    <script>
+        var ipt = document.getElementById('ipt');
+        var message = document.querySelector('.message');
+        ipt.onblur = function () {
+            //根据表单里面的长度 this.value.length
+            if (this.value.length < 6 || this.value.length > 16) {
+                message.className = 'message wrong';
+                message.innerHTML = '您输入的位数不对，要求6~16位';
+            } else {
+                message.className = 'message right';
+                message.innerHTML = '您输入正确';
+            }
+        }
+    </script>
+</body>
+
+</html>

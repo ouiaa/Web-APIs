@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-操作元素之改变元素内容</title>
+</head>
+
+<body>
+    <button>显示系统时间</button>
+    <div>某个时间</div>
+    <p></p>
+    <script>
+        // 1.事件源
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        //2.注册事件
+        btn.onclick = function () {
+            div.innerText = getDate();
+        }
+
+        function getDate() {
+            var now = new Date();
+
+            //输入2021年3月2日 星期几格式
+            year = now.getFullYear();
+            month = now.getMonth() + 1;//注意月份+1
+            date = now.getDate();
+            //由于星期输出的是数字，可以利用数组索引号方式输出文字，注意将周日放在最前面，因为周日数字为0
+            var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            day = now.getDay()
+            return '今天是：' + year + '年' + month + '月' + date + '日 ' + week[day];
+        }
+
+        //元素不添加事件，直接修改显示
+        var p = document.querySelector('p')
+        p.innerText = getDate();
+    </script>
+</body>
+
+</html>

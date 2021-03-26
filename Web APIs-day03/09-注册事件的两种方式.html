@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-注册事件的两种方式</title>
+</head>
+
+<body>
+    <button>传统方式</button>
+    <button>方法监听</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        //传统方法
+        btns[0].onclick = function () {
+            alert('ho');
+        }
+        btns[0].onclick = function () {
+            alert('yo');
+        }
+        //监听注册事件
+        //1）事件类型是字符串，必须加引号，且不用加on
+        //2）同一个元素 同一个事件可以添加多个监听器
+        btns[1].addEventListener('click', function () {
+            alert(11);
+        })
+        btns[1].addEventListener('click', function () {
+            alert(22);
+        })
+    </script>
+</body>
+
+</html>

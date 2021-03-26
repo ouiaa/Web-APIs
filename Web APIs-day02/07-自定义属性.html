@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-自定义属性</title>
+</head>
+
+<body>
+    <div getTime="20" data-index='1' data-list-name='ddd'></div>
+    <script>
+        var div = document.querySelector('div');
+        // console.log(div.getTime);//undefined
+        console.log(div.getAttribute('getTime'));
+        //H5新增获取自定义元素element.dataset.xxxxx   这个xxx是data-后面的名字
+        //dataset是一个集合，里面存放了所有以data开头的自定义属性
+        console.log(div.dataset);
+        console.log(div.dataset.index);
+        console.log(div.dataset['index']);
+        //若自定义属性里面有多个-连接的单词，获取时注意采用驼峰命名法，去掉-
+        console.log(div.dataset.listName);
+        console.log(div.dataset['listName']);
+    </script>
+</body>
+
+</html>

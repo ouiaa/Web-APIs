@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-模拟京东快递查询</title>
+    <style>
+        .search {
+            position: relative;
+            width: 150px;
+            height: 80px;
+            margin: 100px;
+            /* background-color: pink; */
+        }
+
+        .con {
+            display: none;
+            position: absolute;
+            top: -17px;
+            left: 0px;
+            width: 155px;
+            font-size: 18px;
+            line-height: 23px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        }
+
+        input {
+            width: 100%;
+            outline: none;
+            margin-top: 15px;
+        }
+
+        .con::after {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            content: '';
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-top: 8px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con"></div>
+        <input type="text" value="" placeholder="请输入您的快递单号">
+    </div>
+    <script>
+        // ①快递单号输入内容时，上面的大号字体盒子(con )显示(这里面的字号更大)
+        // ②表单检测用户输入:给表单添加键盘事件
+        // ③同时把快递单号里面的值( value )获取过来赋值给con盒子( innerText )做为内容
+        // ④如果快递单号里面内容为空,则隐藏大号字体盒子(con)盒子
+        var input = document.querySelector('input');
+        var con = document.querySelector('.con')
+        input.addEventListener('keyup', function () {
+            // console.log('1');
+            //内容为空,则隐藏大号字体盒子(con)盒子
+            if (this.value == '') {
+                con.style.display = 'none';
+            } else {
+                con.style.display = 'block';
+                con.innerHTML = this.value;
+            }
+        })
+        //失去焦点，就隐藏这个con盒子
+        input.addEventListener('blur', function () {
+            con.style.display = 'none';
+        })
+        //获得焦点，并且文本框内容不为空，就显示这个con盒子
+        input.addEventListener('focus', function () {
+            if (input.value != '') {
+                con.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>

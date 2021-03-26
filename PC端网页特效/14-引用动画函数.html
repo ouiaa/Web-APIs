@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-引用动画函数</title>
+    <style>
+        .sliderbar {
+            position: absolute;
+            top: 100px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin: 100px auto;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .con {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+    <script>
+        var sliderbar = document.querySelector('.sliderbar');
+        var con = document.querySelector('.con');
+        var juli = con.clientWidth - sliderbar.clientWidth
+        //鼠标经过，盒子左移
+        sliderbar.addEventListener('mouseenter', function () {
+            //animate(obj,target,callback),target=con的宽度-sliderbar的宽度
+            //因为左移，所以需要加负号
+            // 当我们动画执行完毕，就把←改为→ 
+            animate(con, -juli, function () {
+                sliderbar.children[0].innerHTML = '→'
+            })
+
+        })
+        //鼠标离开，盒子回去
+        sliderbar.addEventListener('mouseleave', function () {
+            animate(con, 0, function () {
+                sliderbar.children[0].innerHTML = '←'
+            })//注意回去回到0位置，不是juli
+        })
+    </script>
+</body>
+
+</html>

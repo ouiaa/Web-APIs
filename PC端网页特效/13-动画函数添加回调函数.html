@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-动画函数添加回调函数</title>
+    <style>
+        span {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击夏雨开始运动</button>
+    <span>夏雨</span>
+    <script>
+        function animate(obj, target, callback) {
+            //相当于callbac=function(){} 调用的时候callback()
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    if (callback) {
+                        //回调函数写到定时器结束里面
+                        //让盒子到目标位置时再触发函数内容
+                        callback();
+                    }
+                } else {
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                }
+            }, 15)
+        }
+        var span = document.querySelector('span');
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            //将函数作为参数传入
+            animate(span, 400, function () {
+                span.style.backgroundColor = 'red';
+            })
+        })
+    </script>
+</body>
+
+</html>

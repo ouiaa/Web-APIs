@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-事件三要素</title>
+</head>
+
+<body>
+    <button id='btn'>唐伯虎</button>
+    <script>
+        //事件三要素：事件源、事件类型、事件处理程序
+        //1)事件源  谁 获取元素
+        var btn = document.getElementById('btn');
+        //2)事件类型 如何触发，如鼠标点击、鼠标经过、键盘按下
+        //3)事件处理过程 匿名函数赋值完成
+        btn.onclick = function () {
+            alert('点秋香');
+        }
+    </script>
+</body>
+
+</html>

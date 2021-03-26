@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-事件对象阻止默认行为</title>
+</head>
+
+<body>
+    <div>123</div>
+    <a href="www.baidu.com">百度</a>
+    <form action="www.baidu.com">
+        <input type="button" value="提交">
+    </form>
+    <script>
+        //常见事件对象的属性和方法
+        //1.返回事件类型
+        var div = document.querySelector('div');
+        div.addEventListener('click', fn);
+        div.addEventListener('mouseover', fn);
+        div.addEventListener('mouseout', fn);
+
+        function fn(e) {
+            console.log(e.type);
+        }
+        //2.阻止默认行为 让链接不跳转，提交按钮不提交
+        var a = document.querySelector('a')
+        //监听
+        a.addEventListener('click', function (e) {
+            e.preventDefault();//方法
+        })
+        //传统
+        a.onclick = function (e) {
+            // e.preventDefault();
+            //也可以利用return false实现，没有兼容性问题，但return后面代码无法执行，且只限于传统的注册方式
+            return false;
+            alert('1');
+        }
+    </script>
+</body>
+
+</html>

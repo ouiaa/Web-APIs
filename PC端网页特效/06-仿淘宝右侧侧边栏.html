@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-仿淘宝右侧侧边栏</title>
+    <style>
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slider-bar {
+            position: absolute;
+            top: 270px;
+            right: 30px;
+            width: 40px;
+            height: 100px;
+            background-color: seagreen;
+        }
+
+        .goTop {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .header {
+            height: 100px;
+            background-color: pink;
+        }
+
+        .banner {
+            height: 400px;
+            margin: 30px auto;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 800px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <div class="goTop">返回顶部</div>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体区域</div>
+    <script>
+        var sliderbar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var goTop = document.querySelector('.goTop');
+        //offset属性在页面滚动前获取，否则数据会改变
+        var bannerTop = banner.offsetTop;
+        var sliderbarTop = sliderbar.offsetTop - bannerTop;
+        var mainTop = main.offsetTop;
+        // var top = sliderbar.offsetTop;
+        //1.页面滚动事件
+        document.addEventListener('scroll', function () {
+            // console.log(window.pageYOffset);//借此知道滚动完top区域上面被卷高度是183
+            //2.当页面滚动完top区域时，将侧边栏绝对定位改为固定定位;返回时记得改为绝对定位
+            //1)写死不安全，而banner.offsetTop页面尚未滚动时，该值等于被卷头部的高度
+            //2)解决从侧边栏从绝对定位到固定定位盒子弹跳问题
+            //原因：侧边栏盒子本身有一定高度
+            if (window.pageYOffset >= bannerTop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderbarTop + 'px';//记得加单位
+            } else {
+                sliderbar.style.position = 'absolute';
+                //手动输入之前的top值
+                sliderbar.style.top = '270px';
+            }
+            //3.页面滚动到main区域，显示返回顶部，否则隐藏
+            if (window.pageYOffset >= mainTop) {
+                goTop.style.display = 'block';
+            } else {
+                goTop.style.display = 'none';
+            }
+        })
+    </script>
+</body>
+
+</html>

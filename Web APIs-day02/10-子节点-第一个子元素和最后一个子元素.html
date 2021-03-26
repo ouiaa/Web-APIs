@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-子节点-第一个子元素和最后一个子元素</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        // 1.firstChild/lastChild 第一个/最后一个子节点  包括文本节点和其他类型节点
+        console.log(ul.firstChild);
+        console.log(ul.lastChild);
+        //2.firstElementChild/lastElementChild 第一个/最后一个子元素节点  有兼容性问题
+        console.log(ul.firstElementChild);
+        console.log(ul.lastElementChild);
+        //3.最常用的 通过子节点children索引得到第一个/最后一个子元素节点 无兼容性问题
+        console.log(ul.children[0]);
+        console.log(ul.children[ul.children.length - 1]);
+    </script>
+</body>
+
+</html>

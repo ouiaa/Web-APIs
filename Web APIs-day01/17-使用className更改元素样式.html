@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-使用className更改元素样式</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+
+        .change {
+            width: 200px;
+            color: #fff;
+            background-color: pink;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='first'>文本</div>
+    <script>
+        var test = document.querySelector('div');
+        test.onclick = function () {
+            //className适合于样式较多或功能较复杂的情况
+            // this.className = 'change';//注意不加点，会覆盖原有的类
+            //若想保留类，使用并集选择器
+            this.className = 'first change';
+        }
+    </script>
+</body>
+
+</html>

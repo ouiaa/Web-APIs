@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-缓动动画原理</title>
+    <style>
+        span {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn4">点击夏雨运动到400</button>
+    <button class="btn7">点击夏雨运动到700</button>
+    <span>夏雨</span>
+    <script>
+        function animate(obj, target) {
+            //清除以前的定时器
+            clearInterval(obj.timer);
+            //只保留当前的一个定时器执行
+            obj.timer = setInterval(function () {
+                //步长一定要写在定时器里面，每定一次改变一次步长值
+                //步长得是整数，因此我们需要去掉小数
+                //步长为正时，向上取整；步长为负时，向下取整
+                var step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                //改成等号即可，现在的位置等于目标位置就停止了
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                } else {
+                    //步长公式：（目标值-现在都位置）/10
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                }
+            }, 15)
+        }
+        var span = document.querySelector('span');
+        var btn4 = document.querySelector('.btn4');
+        var btn7 = document.querySelector('.btn7');
+        //点击按钮次数越多，盒子走的越来越快，原因是每点击一次就开启一个定时器，解决方法：让我们元素只有一个定时器执行
+        btn4.addEventListener('click', function () {
+            animate(span, 400)
+        })
+        btn7.addEventListener('click', function () {
+            animate(span, 700)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-表格隔行变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 800px;
+            text-align: center;
+            margin: 100px auto;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            height: 30px;
+            font-size: 14px;
+            background-color: skyblue;
+        }
+
+        tbody tr {
+            height: 30px;
+            font-size: 12px;
+            color: blue;
+            border-bottom: 1px solid #ccc;
+        }
+
+
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>代码</th>
+                <th>名称</th>
+                <th>最新公布净值</th>
+                <th>累计净值</th>
+                <th>前单位净值</th>
+                <th>净值增长率</th>
+                <th>公布日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>163417</td>
+                <td>兴全合宜混合A</td>
+                <td>0.860</td>
+                <td>0.860</td>
+                <td>0.863</td>
+                <td>-0.382%</td>
+                <td>2021-01-12</td>
+            </tr>
+            <tr>
+                <td>163417</td>
+                <td>兴全合宜混合A</td>
+                <td>0.860</td>
+                <td>0.860</td>
+                <td>0.863</td>
+                <td>-0.382%</td>
+                <td>2021-01-12</td>
+            </tr>
+            <tr>
+                <td>163417</td>
+                <td>兴全合宜混合A</td>
+                <td>0.860</td>
+                <td>0.860</td>
+                <td>0.863</td>
+                <td>-0.382%</td>
+                <td>2021-01-12</td>
+            </tr>
+            <tr>
+                <td>163417</td>
+                <td>兴全合宜混合A</td>
+                <td>0.860</td>
+                <td>0.860</td>
+                <td>0.863</td>
+                <td>-0.382%</td>
+                <td>2021-01-12</td>
+            </tr>
+            <tr>
+                <td>163417</td>
+                <td>兴全合宜混合A</td>
+                <td>0.860</td>
+                <td>0.860</td>
+                <td>0.863</td>
+                <td>-0.382%</td>
+                <td>2021-01-12</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // 1.获取元素  只选择tbody下的tr
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        //2.循环注册事件，处理程序
+        for (var i = 0; i < trs.length; i++) {
+            //鼠标经过事件，onmouseover 行变色
+            trs[i].onmouseover = function () {
+                /* for (var i = 0; i < trs.length; i++) {
+                    trs[i].className = '';
+                } 排他思想*/
+                this.className = 'bg';
+            }
+            //鼠标离开事件，onmouseout 行默认颜色
+            trs[i].onmouseout = function () {
+                this.className = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

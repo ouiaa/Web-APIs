@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-循环精灵图背景</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 250px;
+            margin: 100px auto;
+            /* border: 1px solid pink; */
+        }
+
+        ul li {
+            float: left;
+            width: 24px;
+            height: 24px;
+            background-color: purple;
+            margin: 15px;
+            list-style: none;
+            background: url(images/sprite.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        // 1.获取元素 所有的li
+        var lis = document.querySelectorAll('li');
+        //2.注册事件 处理程序
+        for (var i = 0; i < lis.length; i++) {
+            //让索引号乘-44就是每个li都背景y坐标。注意是乘-44
+            var index = i * (-44);
+            lis[i].style.backgroundPosition = '0 ' + index + 'px';//注意：x坐标后要加一个空格，末尾要加px单位
+        }
+    </script>
+</body>
+
+</html>

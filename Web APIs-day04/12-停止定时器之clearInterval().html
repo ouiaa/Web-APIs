@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-停止定时器之clearInterval()</title>
+</head>
+
+<body>
+    <button class="start">开始定时器</button>
+    <button class="end">停止定时器</button>
+    <script>
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var timer = null; //null是一个空对象，全局变量
+        start.addEventListener('click', function () {
+            timer = setInterval(function () {
+                console.log('你好');
+            }, 1000)
+        })
+
+        end.addEventListener('click', function () {
+            clearInterval(timer);
+        })
+    </script>
+</body>
+
+</html>

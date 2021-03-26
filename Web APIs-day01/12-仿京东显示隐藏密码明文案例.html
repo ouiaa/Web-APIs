@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-仿京东显示隐藏密码明文案例</title>
+    <style>
+        .box {
+            position: relative;
+            width: 300px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .box input {
+            width: 270px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+
+        .box img {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="images/close.png" alt="" id='eye'>
+        <input type="password" name="" id="pwd">
+    </div>
+    <script>
+        // 1.获取事件源 由于点击图片会更改图片及文本框属性，所以有两个事件源
+        var eye = document.getElementById('eye');
+        var pwd = document.getElementById('pwd');
+        //2.注册事件 处理程序
+        var flag = 0;//通过flag变量来切换文本框和密码框，默认0为密码框
+        eye.onclick = function () {
+            if (flag == 0) {
+                pwd.type = 'text';
+                flag = 1;
+                eye.src = 'images/open.png';
+            } else {
+                pwd.type = 'password';
+                flag = 0;
+                eye.src = 'images/close.png';
+            }
+        }
+    </script>
+</body>
+
+</html>

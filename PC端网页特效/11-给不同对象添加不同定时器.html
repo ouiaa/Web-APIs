@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-给不同对象添加不同定时器</title>
+    <style>
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击夏雨开始运动</button>
+    <div></div>
+    <span>夏雨</span>
+    <script>
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+
+        //简单动画函数封装，obj目标对象,target目标位置
+        //obj是对象，给它添加timer属性，这样每个调用的对象都有自己专门的定时器
+        function animate(obj, target) {
+            //清除以前的定时器
+            clearInterval(obj.timer);
+            //只保留当前的一个定时器执行
+            obj.timer = setInterval(function () {
+                if (obj.offsetLeft >= target) {
+                    clearInterval(obj.timer);
+                } else {
+                    obj.style.left = obj.offsetLeft + 1 + 'px';
+                }
+            }, 30)
+        }
+        var btn = document.querySelector('button');
+        //点击按钮次数越多，盒子走的越来越快，原因是每点击一次就开启一个定时器，解决方法：让我们元素只有一个定时器执行
+        btn.addEventListener('click', function () {
+            animate(span, 400)
+        })
+        animate(div, 300);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-节点操作之子节点</title>
+</head>
+
+<body>
+    <ol>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <script>
+        //获得ol下的li元素
+        //DOM下的方法
+        var ol = document.querySelector('ol');
+        var lis = ol.querySelectorAll('li');
+        // console.log(lis);
+
+        //子节点
+        //childNodes
+        console.log(ol.childNodes);//包括文本节点、元素节点等所有子节点
+        console.log(ol.childNodes[0].nodeType);//3 文本节点
+        console.log(ol.childNodes[1].nodeType);//1 元素节点
+        //children
+        console.log(ol.children);
+    </script>
+</body>
+
+</html>

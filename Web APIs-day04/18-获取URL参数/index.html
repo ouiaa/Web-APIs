@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(location.search);//?uname=aaa
+        //1.去掉? substr('起始的索引号',截取几个字符)，第二个参数不填，默认截取到末尾
+        var params = location.search.substr(1);
+        console.log(params);//uname=aaa
+        //2.spit('='),将字符存储为数组，以=分隔  uname也需要，所以完整取，而不是单取aaa
+        var arr = params.split('=');
+        console.log(arr);//["uname", "aaa"]
+        console.log(arr[1]);//aaa
+        div.innerHTML = arr[1] + '欢迎你';
+    </script>
+</body>
+
+</html>

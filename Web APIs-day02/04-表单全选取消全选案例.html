@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-表单全选取消全选案例</title>
+    <style>
+        table {
+            margin: 100px auto;
+            text-align: center;
+            /* border-collapse: collapse; */
+
+        }
+
+        thead tr {
+            height: 30px;
+            background-color: skyblue;
+
+        }
+
+        th,
+        tr {
+            border: 1px solid #ccc;
+        }
+
+        tbody tr {
+            height: 30px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="" id="j_cbAll"></th>
+                    <th>商品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>iPad Pro</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>iPad Air</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>Apple Watch</td>
+                    <td>4000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //1.获取元素
+        var j_cbAll = document.getElementById('j_cbAll');//全选按钮
+        var j_tbs = document.getElementById('j_tb').getElementsByTagName('input');//下面所有的复选框
+        //2.注册事件
+        //1）全选和取消全选:让下面所有复选框的checked属性(选中状态)跟随全选按钮
+        j_cbAll.onclick = function () {
+            //console.log(this.checked);//复选框选中状态为true，否则false未选择
+            for (var i = 0; i < j_tbs.length; i++) {
+                j_tbs[i].checked = this.checked;
+            }
+        }
+
+        //2）下面复选框需要全部选中，上面全选才能选中。
+        //做法:给下面所有复选框绑定点击事件，每次点击，都要循环查看下面所有的复选框是否有没选中的，如果有一个没选中的，上面全选就不选中。
+        for (var i = 0; i < j_tbs.length; i++) {
+            //循环检查下面复选框的状态
+            j_tbs[i].onclick = function () {
+                //通过flag变量来控制全选框的状态，默认是勾选状态true，不勾选则为false
+                var flag = true;
+                for (var i = 0; i < j_tbs.length; i++) {
+                    if (!j_tbs[i].checked) {//下面复选框有一个没勾选，全选框就不选，并退出循环，提高效率
+                        flag = false;
+                        break;
+                    }
+                }
+                j_cbAll.checked = flag;
+            }
+        }
+    </script>
+</body>
+
+</html>

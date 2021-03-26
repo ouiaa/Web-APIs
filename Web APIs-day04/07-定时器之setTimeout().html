@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-定时器之setTimeout()</title>
+</head>
+
+<body>
+    <script>
+        //语法：window.setTimeout(调用函数，延时时间)
+        //1.window在调用时可以省略
+        //2.延时时间单位是毫秒，也可省略，省略默认为0
+        //3.调用函数可以是匿名函数也可以写函数名.还有另一种写法'函数名()' 麻烦，不常用
+        //4.页面中可能有很多个定时器，我们经常给定时器加标识符（名字）
+        /* setTimeout(function () {
+            console.log('时间到了');
+        }, 2000) */
+
+        function callback() {
+            console.log('爆炸了');
+        }
+        setTimeout(callback, 3000);
+        // setTimeout('callback()', 4000);
+
+        //  起名字
+        var timer1 = setTimeout(callback, 1000);
+        var timer2 = setTimeout(callback, 2000);
+
+    </script>
+</body>
+
+</html>

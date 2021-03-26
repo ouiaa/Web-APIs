@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度换肤效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(images/1.jpg) no-repeat center;
+        }
+
+        .baidu {
+            width: 410px;
+            background-color: #fff;
+            margin: 100px auto;
+            /* ?若无下句话，背景颜色无法显示 */
+            overflow: hidden;
+            padding-top: 3px;
+        }
+
+        ul li {
+            float: left;
+            list-style: none;
+            margin: 0 1px;
+            cursor: pointer;
+        }
+
+        .baidu img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="baidu">
+        <li><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+    </ul>
+    <script>
+        //获取元素  严格选择是.baidu类的下图片，元素获取方法可以连用
+        var imgs = document.querySelector('.baidu').querySelectorAll('img');
+        //注册事件 处理程序 循环添加图片事件
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
+                //将鼠标点击的图片的src路径赋值给body的背景图片
+                document.body.style.background = 'url(' + this.src + ')';//注意该语句的连用，以及url()是字符串，使用字符串拼接来赋值路径
+            }
+        }
+    </script>
+</body>
+
+</html>

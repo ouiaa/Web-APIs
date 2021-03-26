@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-简单动画函数封装</title>
+    <style>
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span>夏雨</span>
+    <script>
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        //简单动画函数封装，obj目标对象,target目标位置
+        function animate(obj, target) {
+            var timer = setInterval(function () {
+                if (obj.offsetLeft >= target) {
+                    //停止动画
+                    clearInterval(timer);
+                } else {
+                    obj.style.left = obj.offsetLeft + 1 + 'px';
+                }
+            }, 30)
+        }
+        animate(div, 300);
+        animate(span, 200)
+
+    </script>
+</body>
+
+</html>
