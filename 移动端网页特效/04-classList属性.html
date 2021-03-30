@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList属性</title>
+    <style>
+        .bg {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one two"></div>
+    <button>开关灯</button>
+    <script>
+        var div = document.querySelector('div')
+        // classList 返回元素的类名，返回形式是伪数组的形式
+        console.log(div.classList);
+        // 1.添加类名  是在后面追加类名，不会覆盖以前的类名，注意前面不要加.
+        div.classList.add('three');
+        // 2.移除类名
+        div.classList.remove('one')
+        // 3.切换类 在添加类和移除类之间切换
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function () {
+            document.body.classList.toggle('bg')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端拖动元素</title>
+    <style>
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+        // 手指初始坐标与盒子初始坐标定义为全局变量，两个事件内都需要使用到
+        // 手指初始坐标
+        var startX = 0;
+        var startY = 0;
+        // 盒子初始坐标
+        var x = 0;
+        var y = 0;
+        // (1)触摸元素touchstart: 获取手指初始坐标,同时获得盒子原来的位置
+        div.addEventListener('touchstart', function (e) {
+            // 手指初始坐标
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+            // 盒子初始坐标
+            x = this.offsetLeft;
+            y = this.offsetTop;
+        })
+        //移动手指touchmove:计算手指的滑动距离,并且移动盒子
+        div.addEventListener('touchmove', function (e) {
+            // 手指滑动的距离：手指移动后的坐标-手指原始的坐标
+            var movex = e.targetTouches[0].pageX - startX;
+            var movey = e.targetTouches[0].pageY - startY;
+            // 移动盒子 盒子距离=原来盒子的坐标+手指滑动的距离
+            div.style.left = x + movex + 'px'
+            div.style.top = y + movey + 'px'
+        })
+    </script>
+</body>
+
+</html>

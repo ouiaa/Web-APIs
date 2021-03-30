@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记住用户名</title>
+</head>
+
+<body>
+    <input type="text" name="" id="username">
+    <input type="checkbox" name="" id="remember">记住用户名
+    <script>
+        var username = document.querySelector('#username')
+        var remember = document.querySelector('#remember')
+        // 打开页面,先判断是否有这个用户名,如果有,就在表单里面显示用户名,并且勾选复选框
+        if (localStorage.getItem('username')) {
+            username.value = localStorage.getItem('username')
+            remember.checked = true
+        }
+        // 当复选框发生改变的时候change事件
+        remember.addEventListener('change', function () {
+            // 如果勾选,就存储,否则就移除
+            if (this.checked) {
+                localStorage.setItem('username', username.value)
+            } else {
+                localStorage.removeItem('username')
+            }
+        })
+    </script>
+</body>
+
+</html>

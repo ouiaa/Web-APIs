@@ -1,0 +1,330 @@
+body {
+	max-width: 540px;
+	min-width: 320px;
+	margin: 0 auto;
+	font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei",STXihei,hei;
+	color: #000;
+	background: #f2f2f2;
+	overflow-x: hidden;
+	-webkit-tap-highlight-color: transparent;
+    /* height: 2000px; */
+}
+
+a{
+    text-decoration: none;
+    color: #222;
+}
+
+div{
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+.goBack{
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 2px;
+    width: 38px;
+    height: 38px;
+    background: url(../images/back.png) no-repeat;
+    background-size: 38px;
+}
+
+.search-index{
+    display: flex;
+    position: fixed;
+    /* 固定定位盒子必须有宽度，且与父级无关，以屏幕为准 */
+    top: 0;
+    /* 水平居中 */
+    left: 50%;
+    width: 100%;
+    height: 44px;
+    min-width: 320px;
+    max-width: 540px;
+    transform: translateX(-50%);
+    background-color: #f2f2f2;
+    z-index: 999;
+    /* background-color: pink; */
+}
+
+.search{   
+    flex: 1;
+    height: 26px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    /* 在侧轴y轴上居中，垂直居中 */
+    align-self: center;
+    /* 并不能起水平居中效果 */
+    /* justify-content: center; */
+    margin: 0 10px;
+    line-height: 24px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.search::before{
+    content: "";
+    /* display: inline-block; */
+    float: left;
+    width: 15px;
+    height: 15px;
+    background: url(../images/sprite.png) no-repeat -59px -278px;
+    background-size: 104px;
+    margin: 5px;
+}
+
+.user{
+    width: 44px;
+    height: 44px;
+    /* background-color: purple; */
+    text-align: center;
+    font-size: 12px;
+    color:#2eaae0;
+}
+
+.user::before{
+    content: "";
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../images/sprite.png) no-repeat -59px -192px;
+    background-size: 104px;
+    margin: 2px auto;
+}
+
+/* 焦点图 */
+li{
+    list-style: none;
+}
+
+.focus{
+    position: relative;
+    margin-top: 44px;
+}
+
+.focus img{
+    width: 100%;
+}
+
+.focus ul{
+    /* 清除浮动 */
+    overflow: hidden;
+    width: 500%;
+    /* 让ul默认显示第一张图片 */
+    margin-left: -100%;
+}
+
+.focus ul li{
+    float: left;
+    width: 20%;
+}
+
+.focus ol{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin-bottom: 0;
+}
+
+.focus ol li{
+    /* 转为行内块，可以一行上显示，同时有空隙 */
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all .3s;
+}
+
+.focus ol .current{
+    width: 15px;
+}
+
+
+.local-nav{
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    margin: 3px 4px;
+    border-radius: 8px;
+}
+
+.local-nav a{
+    display: flex;
+    /* 主轴设置为y轴 */
+    flex-direction: column;
+    /* 侧轴居中对齐，单行*/
+    align-items: center;
+    margin-top: 8px;
+}
+
+.local-nav li{
+    flex: 1;
+}
+
+.local-nav .local-icon{ 
+    width: 32px;
+    height: 32px;
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px;
+}
+
+nav{
+    border-radius: 8px;
+    margin: 0 4px 3px;
+    overflow: hidden;
+}
+
+.nav-common{
+    display: flex;
+    height: 88px;
+    margin-bottom: 3px;
+    background-color: pink;
+}
+
+.nav-items{
+    /* 不冲突的 */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 前两个孩子 */
+.nav-items:nth-child(-n+2){
+    border-right: 1px solid #fff;
+}
+
+.nav-items a{
+    flex: 1;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 44px;
+    text-shadow: 1px 1px rgba(0, 0, 0, .2);
+}
+
+.nav-items a:nth-child(2){
+    border-top: 1px solid #fff;
+}
+
+.nav-items:nth-child(1) a{
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 121px;
+}
+
+/* 线性背景 */
+.nav-common:nth-child(1){
+    background: -webkit-linear-gradient(left,#FA5A55,#FA994D);
+}
+
+.nav-common:nth-child(2){
+    background: -webkit-linear-gradient(left,#4B90ED,#53BCED);
+}
+
+.nav-common:nth-child(3){
+    background: -webkit-linear-gradient(left,#34C2A9,#6CD559);
+}
+
+.subnav-entry{
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 0 4px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.subnav-entry li{
+    /* flex也可以也成百分号形式，相对父级而言 */
+    flex:20%;
+}
+
+.subnav-entry li a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.subnav-entry-icon{
+    width: 28px;
+    height: 28px;
+    background: url(../images/subnav-bg.png) no-repeat 0 0;
+    background-size: 28px;
+}
+
+.sales-box{
+    background-color: #fff;
+    margin: 4px;
+}
+
+.sales-hd{
+    position: relative;
+    height: 44px;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #ccc;
+}
+
+.sales-hd h2{
+    position: relative;
+    /* SEO优化 */
+    text-indent: -999px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.sales-hd h2::after{
+    position: absolute;
+    content: "";
+    width: 79px;
+    height: 15px;
+    top:8px;
+    left: 8px;
+    background: url(../images/hot.png) no-repeat 0 -20px;
+    background-size: 79px;
+}
+
+.more{
+    position: absolute;
+    top:9px;
+    right: 5px;
+    background: -webkit-linear-gradient(left,#FF506C,#FF6BC6);
+    color: #fff;
+    border-radius: 15px;
+    padding: 3px 20px 3px 10px;
+    
+}
+.more::after{
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* 三角箭头制作 */
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transform: rotate(45deg);
+}
+
+.row{
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.row a{
+    flex: 1;
+}
+
+.row a img{
+    width: 100%;
+}
+
+.row a:nth-child(1){
+    border-right: 1px solid #eee;
+}

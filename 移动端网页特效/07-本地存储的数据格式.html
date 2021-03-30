@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地存储的数据格式</title>
+</head>
+
+<body>
+    <script>
+        var todolist = [{
+            title: 'title1',
+            done: false
+        }, {
+            title: 'title2',
+            done: false
+        }];
+        // 1.本地存储只能存储字符串数据格式，因此需要将数组对象转换为字符串格式JSON.stringify()
+        var data = JSON.stringify(todolist)
+        localStorage.setItem('todo', data)
+        // 2.为了能使用对象里的属性，我们需要将字符串转为为对象格式，使用JSON.parse()
+        data = JSON.parse(data)
+        console.log(data);
+        console.log(data[0].title);
+    </script>
+</body>
+
+</html>
